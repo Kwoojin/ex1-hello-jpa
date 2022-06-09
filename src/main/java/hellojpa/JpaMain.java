@@ -31,7 +31,7 @@ public class JpaMain {
             */
 
             List<Member> result = em.createQuery("select m from Member m", Member.class)
-                    .setMaxResults(2)
+                    .setMaxResults(3)
                     .getResultList();
 
             result.stream().forEach(member -> {
