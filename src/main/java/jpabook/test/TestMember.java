@@ -36,6 +36,10 @@ public class TestMember {
     @JoinColumn(name = "team_id")
     private TestTeam team;
 
+    @OneToOne
+    @JoinColumn(name = "locker_id")
+    private TestLocker locker;
+
     // 연관 관계 편의 메서드
     public void changeTeam(TestTeam team) {
         this.team = team;
