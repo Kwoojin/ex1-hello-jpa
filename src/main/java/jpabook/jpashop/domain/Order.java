@@ -10,10 +10,16 @@ import java.util.List;
 
 @Entity
 @Getter @Setter
+@SequenceGenerator(
+        name="order_seq_generator",
+        sequenceName = "order_seq",
+        initialValue = 1, allocationSize = 50
+)
 @Table(name = "ORDERS")
 public class Order {
 
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "order_seq_generator")
     @Column(name = "order_id")
     private Long id;
 
@@ -21,7 +27,7 @@ public class Order {
 //    private Long memberId;
 
     @ManyToOne
-    @JoinColumn(name = "member_id")
+    @JoinColumn(name = "member_id", foreignKey = @ForeignKey(name = "fk_order_to_member"))
     private Member member;
 
     @OneToMany(mappedBy = "order")
@@ -32,6 +38,7 @@ public class Order {
 
     @Enumerated(EnumType.STRING)
     private OrderStatus status;
+
     public void addOrderItem(OrderItem orderItem) {
         orderItems.add(orderItem);
         orderItem.setOrder(this);

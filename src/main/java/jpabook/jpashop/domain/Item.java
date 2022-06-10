@@ -7,9 +7,15 @@ import javax.persistence.*;
 
 @Entity
 @Getter @Setter
+@SequenceGenerator(
+        name="item_seq_generator",
+        sequenceName = "item_seq",
+        initialValue = 1, allocationSize = 50
+)
 public class Item {
 
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "item_seq_generator")
     @Column(name = "item_id")
     private Long id;
 
