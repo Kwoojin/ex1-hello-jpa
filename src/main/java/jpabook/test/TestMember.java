@@ -1,36 +1,46 @@
 package jpabook.test;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 
-//@Entity
-@SequenceGenerator(
-        name="MEMBER_SEQ_GENERATOR",
-        sequenceName = "MEMBER_SEQ", //매핑할 데이터베이스 시퀀스 이름
-        initialValue = 1, allocationSize = 50
-)
+@Entity
+//@SequenceGenerator(
+//        name="MEMBER_SEQ_GENERATOR",
+//        sequenceName = "MEMBER_SEQ", //매핑할 데이터베이스 시퀀스 이름
+//        initialValue = 1, allocationSize = 50
+//)
 /*@TableGenerator(
         name="MEMBER_SEQ_GENERATOR",
         table = "MY_SEQUENCES",
         pkColumnValue = "MEMBER_SEQ", allocationSize = 1
 )*/
 //@Table(name = "Member")
+@Getter @Setter
 public class TestMember {
     @Id
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
     //권장 : Long형 + 대체키 + 키 생성전략
     /*@GeneratedValue(strategy = GenerationType.TABLE,
             generator = "MEMBER_SEQ_GENERATOR")*/
-    @GeneratedValue(strategy = GenerationType.SEQUENCE,
-            generator = "MEMBER_SEQ_GENERATOR")
+//    @GeneratedValue(strategy = GenerationType.SEQUENCE,
+//            generator = "MEMBER_SEQ_GENERATOR")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column(name = "name")
     private String username;
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
+    @ManyToOne//(fetch = FetchType.LAZY)
+    @JoinColumn(name = "team_id")
+    private TestTeam team;
 
+    // 연관 관계 편의 메서드
+    public void changeTeam(TestTeam team) {
+        this.team = team;
+        team.getMembers().add(this);
+    }
     /*
     private Integer age;
 
