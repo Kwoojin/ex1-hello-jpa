@@ -15,7 +15,7 @@ import java.util.List;
         sequenceName = "order_seq",
         initialValue = 1, allocationSize = 50
 )
-@Table(name = "ORDERS")
+@Table(name = "orders")
 public class Order {
 
     @Id
@@ -29,6 +29,10 @@ public class Order {
     @ManyToOne
     @JoinColumn(name = "member_id", foreignKey = @ForeignKey(name = "fk_order_to_member"))
     private Member member;
+
+    @OneToOne
+    @JoinColumn(name = "delivery_id", foreignKey = @ForeignKey(name = "fk_order_to_delivery"))
+    private Delivery delivery;
 
     @OneToMany(mappedBy = "order")
     private List<OrderItem> orderItems = new ArrayList<>();
