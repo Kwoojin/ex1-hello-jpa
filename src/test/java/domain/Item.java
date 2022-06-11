@@ -1,4 +1,4 @@
-package jpabook.test;
+package domain;
 
 import javax.persistence.*;
 
@@ -11,7 +11,7 @@ import javax.persistence.*;
 @Inheritance(strategy = InheritanceType.JOINED)
 //@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn
-public abstract class TItem {
+public abstract class Item {
 
     @Id @GeneratedValue
     private Long id;

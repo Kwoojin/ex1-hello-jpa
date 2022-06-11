@@ -1,4 +1,4 @@
-package jpabook.test;
+package domain;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -19,24 +19,24 @@ public class TestMain {
 
         try{
             System.out.println("======== TeamA 등록 ========");
-            TTeam teamA = new TTeam();
+            Team teamA = new Team();
             teamA.setName("TeamA");
             em.persist(teamA);
 
             System.out.println("======== TeamB 등록 ========");
-            TTeam teamB = new TTeam();
+            Team teamB = new Team();
             teamB.setName("TeamB");
             em.persist(teamB);
 
 
             System.out.println("======== member1 등록 ========");
-            TestMember testMember = new TestMember();
+            Member testMember = new Member();
             testMember.setUsername("member1");
             testMember.changeTeam(teamA);
             em.persist(testMember);
 
             System.out.println("======== member2 등록 ========");
-            TestMember testMember2 = new TestMember();
+            Member testMember2 = new Member();
             testMember2.setUsername("member2");
             testMember2.changeTeam(teamA);
             em.persist(testMember2);
@@ -50,14 +50,14 @@ public class TestMain {
             em.clear();
 
             System.out.println("======== 데이터 조회 ========");
-            TestMember findMember = em.find(TestMember.class, testMember.getId());
-            List<TestMember> members = findMember.getTeam().getMembers();
+            Member findMember = em.find(Member.class, testMember.getId());
+            List<Member> members = findMember.getTeam().getMembers();
 
 //            members.add(testMember2);
             em.flush();
             em.clear();
 
-            findMember = em.find(TestMember.class, testMember.getId());
+            findMember = em.find(Member.class, testMember.getId());
             members = findMember.getTeam().getMembers();
 
             System.out.println("======== 출력 ========");

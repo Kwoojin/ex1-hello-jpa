@@ -1,4 +1,4 @@
-package jpabook.test;
+package domain;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -9,7 +9,7 @@ import java.util.List;
 
 //@Entity
 @Getter @Setter
-public class TTeam {
+public class Team {
 
     @Id
     @GeneratedValue
@@ -19,7 +19,7 @@ public class TTeam {
     private String name;
 
     @OneToMany(mappedBy = "team")
-    private List<TestMember> members = new ArrayList<>();
+    private List<Member> members = new ArrayList<>();
 
     /*public void addMember(TestMember member) {
         member.setTeam(this);

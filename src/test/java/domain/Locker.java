@@ -1,10 +1,10 @@
-package jpabook.test;
+package domain;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 //@Entity
-public class TLocker {
+public class Locker {
 
     @Id
     @GeneratedValue

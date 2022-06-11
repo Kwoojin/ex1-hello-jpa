@@ -1,4 +1,4 @@
-package jpabook.test;
+package domain;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -18,7 +18,7 @@ import javax.persistence.*;
 )*/
 //@Table(name = "Member")
 @Getter @Setter
-public class TestMember extends TBaseEntity {
+public class Member extends BaseEntity {
     @Id
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
     //권장 : Long형 + 대체키 + 키 생성전략
@@ -34,14 +34,14 @@ public class TestMember extends TBaseEntity {
 
     @ManyToOne//(fetch = FetchType.LAZY)
     @JoinColumn(name = "team_id")
-    private TTeam team;
+    private Team team;
 
     @OneToOne
     @JoinColumn(name = "locker_id")
-    private TLocker locker;
+    private Locker locker;
 
     // 연관 관계 편의 메서드
-    public void changeTeam(TTeam team) {
+    public void changeTeam(Team team) {
         this.team = team;
         team.getMembers().add(this);
     }

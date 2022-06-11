@@ -1,4 +1,4 @@
-package jpabook.test;
+package domain;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
  */
 @MappedSuperclass   //공통
 @Getter @Setter
-public abstract class TBaseEntity {
+public abstract class BaseEntity {
 
     private String createBy;
     private LocalDateTime createdDate;

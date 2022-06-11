@@ -1,7 +1,7 @@
-package jpabook.test;
+package domain;
 
 //@Entity
-public class TMovie extends TItem {
+public class Movie extends Item {
 
     private String director;
     private String actor;
