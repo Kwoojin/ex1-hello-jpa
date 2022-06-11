@@ -18,7 +18,7 @@ import javax.persistence.*;
 )*/
 //@Table(name = "Member")
 @Getter @Setter
-public class TestMember {
+public class TestMember extends TBaseEntity {
     @Id
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
     //권장 : Long형 + 대체키 + 키 생성전략
@@ -34,17 +34,20 @@ public class TestMember {
 
     @ManyToOne//(fetch = FetchType.LAZY)
     @JoinColumn(name = "team_id")
-    private TestTeam team;
+    private TTeam team;
 
     @OneToOne
     @JoinColumn(name = "locker_id")
-    private TestLocker locker;
+    private TLocker locker;
 
     // 연관 관계 편의 메서드
-    public void changeTeam(TestTeam team) {
+    public void changeTeam(TTeam team) {
         this.team = team;
         team.getMembers().add(this);
     }
+
+
+
     /*
     private Integer age;
 
