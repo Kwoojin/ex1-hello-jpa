@@ -37,7 +37,7 @@ public class Category extends BaseEntity {
      * 자식의 생명 주기 관리 가능
      */
 
-    @OneToMany(mappedBy = "parent", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "parent") //cascade = CascadeType.ALL, orphanRemoval = true
     private List<Category> child = new ArrayList<>();
 
     /**
