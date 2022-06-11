@@ -14,7 +14,9 @@ import java.util.List;
         sequenceName = "item_seq",
         initialValue = 1, allocationSize = 50
 )
-public class Item {
+@Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn
+public class Item extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "item_seq_generator")

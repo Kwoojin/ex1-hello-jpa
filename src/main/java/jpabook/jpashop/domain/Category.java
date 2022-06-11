@@ -10,7 +10,7 @@ import java.util.List;
         sequenceName = "category_seq",
         initialValue = 1, allocationSize = 50
 )
-public class Category {
+public class Category extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "category_seq_generator")

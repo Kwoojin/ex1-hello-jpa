@@ -12,7 +12,7 @@ import javax.persistence.*;
         sequenceName = "orderItem_seq",
         initialValue = 1, allocationSize = 50
 )
-public class OrderItem {
+public class OrderItem extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "orderItem_seq_generator")

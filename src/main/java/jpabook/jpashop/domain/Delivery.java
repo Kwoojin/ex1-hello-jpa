@@ -8,7 +8,7 @@ import javax.persistence.*;
         sequenceName = "delivery_seq",
         initialValue = 1, allocationSize = 50
 )
-public class Delivery {
+public class Delivery extends BaseEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "delivery_seq_generator")

@@ -16,7 +16,7 @@ import java.util.List;
         initialValue = 1, allocationSize = 50
 )
 @Table(name = "orders")
-public class Order {
+public class Order extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "order_seq_generator")
