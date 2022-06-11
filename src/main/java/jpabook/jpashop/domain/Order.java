@@ -30,11 +30,15 @@ public class Order extends BaseEntity {
     @JoinColumn(name = "member_id", foreignKey = @ForeignKey(name = "fk_order_to_member"))
     private Member member;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    /**
+     * Orders 통하여 delivery, order 관리
+     * cascade 는 business 상황에 따라 고려
+     */
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "delivery_id", foreignKey = @ForeignKey(name = "fk_order_to_delivery"))
     private Delivery delivery;
 
-    @OneToMany(mappedBy = "order")
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private List<OrderItem> orderItems = new ArrayList<>();
 
     @Column(name = "order_date")
