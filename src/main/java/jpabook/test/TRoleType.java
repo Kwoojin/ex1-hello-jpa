@@ -1,5 +1,5 @@
 package jpabook.test;
 
-public enum RoleType {
+public enum TRoleType {
     ADMIN, USER
 }

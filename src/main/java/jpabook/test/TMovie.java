@@ -1,9 +1,7 @@
 package jpabook.test;
 
-import javax.persistence.Entity;
-
 //@Entity
-public class Movie extends TestItem {
+public class TMovie extends TItem {
 
     private String director;
     private String actor;

@@ -19,12 +19,12 @@ public class TestMain {
 
         try{
             System.out.println("======== TeamA 등록 ========");
-            TestTeam teamA = new TestTeam();
+            TTeam teamA = new TTeam();
             teamA.setName("TeamA");
             em.persist(teamA);
 
             System.out.println("======== TeamB 등록 ========");
-            TestTeam teamB = new TestTeam();
+            TTeam teamB = new TTeam();
             teamB.setName("TeamB");
             em.persist(teamB);
 

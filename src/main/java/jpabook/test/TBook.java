@@ -1,9 +1,7 @@
 package jpabook.test;
 
-import javax.persistence.Entity;
-
 //@Entity
-public class Book extends TestItem {
+public class TBook extends TItem {
 
     private String author;
     private String isbn;
