@@ -19,11 +19,11 @@ public class OrderItem extends BaseEntity {
     @Column(name = "order_item_id")
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "order_id", foreignKey = @ForeignKey(name = "fk_orderItem_to_order"))
     private Order order;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "item_id", foreignKey = @ForeignKey(name = "fk_orderItem_to_item"))
     private Item item;
 

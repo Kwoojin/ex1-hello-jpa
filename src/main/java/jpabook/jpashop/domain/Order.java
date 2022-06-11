@@ -26,11 +26,11 @@ public class Order extends BaseEntity {
 //    @Column(name = "member_id") //UML 문제
 //    private Long memberId;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id", foreignKey = @ForeignKey(name = "fk_order_to_member"))
     private Member member;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "delivery_id", foreignKey = @ForeignKey(name = "fk_order_to_delivery"))
     private Delivery delivery;
 
