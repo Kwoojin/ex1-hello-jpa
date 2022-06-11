@@ -1,7 +1,7 @@
-package jpabook.test;
+package domain;
 
 //@Entity
-public class TBook extends TItem {
+public class Book extends Item {
 
     private String author;
     private String isbn;
