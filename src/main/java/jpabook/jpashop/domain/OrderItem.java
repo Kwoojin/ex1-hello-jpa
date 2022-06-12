@@ -30,4 +30,8 @@ public class OrderItem extends BaseEntity {
     @Column(name = "order_price")
     private int orderPrice;
     private int count;
+
+    public void setOrder(Order order) {
+        this.order = order;
+    }
 }
