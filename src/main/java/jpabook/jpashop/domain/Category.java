@@ -1,5 +1,7 @@
 package jpabook.jpashop.domain;
 
+import lombok.Getter;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +12,7 @@ import java.util.List;
         sequenceName = "category_seq",
         initialValue = 1, allocationSize = 50
 )
+@Getter
 public class Category extends BaseEntity {
 
     @Id

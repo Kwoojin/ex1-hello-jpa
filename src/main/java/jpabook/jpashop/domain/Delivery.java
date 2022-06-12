@@ -1,5 +1,7 @@
 package jpabook.jpashop.domain;
 
+import lombok.Getter;
+
 import javax.persistence.*;
 
 @Entity
@@ -8,6 +10,7 @@ import javax.persistence.*;
         sequenceName = "delivery_seq",
         initialValue = 1, allocationSize = 50
 )
+@Getter
 public class Delivery extends BaseEntity{
 
     @Id
