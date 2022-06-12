@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 
 
 @MappedSuperclass
-@Getter @Setter
+@Getter
 public abstract class BaseEntity {
 
     private String createBy;
