@@ -6,7 +6,7 @@ import lombok.Setter;
 import javax.persistence.Entity;
 
 @Entity
-@Getter @Setter
+@Getter
 public class Movie extends Item {
 
     private String director;
