@@ -78,12 +78,17 @@ public class Member extends BaseEntity {
      * 변경 사항이 발생하면, 해당 member_id 모두 삭제한 이후에
      * 모두 Insert 함
      * 되도록 사용하지 말자..
+     *
+     * @ElementCollection
+     * @CollectionTable(name = "address", joinColumns =
+     * @JoinColumn(name = "member_id")
+     * )
+     * private List<Address> addressHistory = new ArrayList<>();
      */
-    @ElementCollection
-    @CollectionTable(name = "address", joinColumns =
-        @JoinColumn(name = "member_id")
-    )
-    private List<Address> addressHistory = new ArrayList<>();
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "member_id")
+    private List<AddressEntity> addressHistory = new ArrayList<>();
 
 
     // 연관 관계 편의 메서드
