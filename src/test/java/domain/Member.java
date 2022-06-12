@@ -5,6 +5,10 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 //@Entity
 //@SequenceGenerator(
@@ -52,7 +56,7 @@ public class Member extends BaseEntity {
     /**
      * 한 엔티티 에서 같은 값 타입 사용 시
      */
-    @Embedded
+    /*@Embedded
     @AttributeOverrides({
             @AttributeOverride(name="city",
                     column=@Column(name = "work_city")),
@@ -61,7 +65,25 @@ public class Member extends BaseEntity {
             @AttributeOverride(name="zipcode",
                     column=@Column(name = "work_zipcode")),
     })
-    private Address workAddress;
+    private Address workAddress;*/
+
+    @ElementCollection
+    @CollectionTable(name = "favorite_food", joinColumns =
+        @JoinColumn(name = "member_id")
+    )
+    @Column(name = "food_name") // 예외적
+    private Set<String> favoriteFoods = new HashSet<>();
+
+    /**
+     * 변경 사항이 발생하면, 해당 member_id 모두 삭제한 이후에
+     * 모두 Insert 함
+     * 되도록 사용하지 말자..
+     */
+    @ElementCollection
+    @CollectionTable(name = "address", joinColumns =
+        @JoinColumn(name = "member_id")
+    )
+    private List<Address> addressHistory = new ArrayList<>();
 
 
     // 연관 관계 편의 메서드
@@ -69,8 +91,6 @@ public class Member extends BaseEntity {
         this.team = team;
         team.getMembers().add(this);
     }
-
-
 
     /*
     private Integer age;
