@@ -49,6 +49,20 @@ public class Member extends BaseEntity {
     @Embedded
     private Address homeAddress;
 
+    /**
+     * 한 엔티티 에서 같은 값 타입 사용 시
+     */
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride(name="city",
+                    column=@Column(name = "work_city")),
+            @AttributeOverride(name="street",
+                    column=@Column(name = "work_street")),
+            @AttributeOverride(name="zipcode",
+                    column=@Column(name = "work_zipcode")),
+    })
+    private Address workAddress;
+
 
     // 연관 관계 편의 메서드
     public void changeTeam(Team team) {
