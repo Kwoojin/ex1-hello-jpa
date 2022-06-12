@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Getter @Setter
+@Getter
 @SequenceGenerator(
         name="member_seq_generator",
         sequenceName = "member_seq",
