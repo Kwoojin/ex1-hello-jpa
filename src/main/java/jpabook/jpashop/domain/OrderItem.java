@@ -6,7 +6,7 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @Entity
-@Getter @Setter
+@Getter
 @SequenceGenerator(
         name="orderItem_seq_generator",
         sequenceName = "orderItem_seq",
